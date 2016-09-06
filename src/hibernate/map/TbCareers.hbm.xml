@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 23/08/2016 11:10:53 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="test" name="hibernate.model.TbCareers" optimistic-lock="version" table="tb_careers">
+    <id name="flPkCareer" type="java.lang.Long">
+      <column name="fl_pk_career"/>
+      <generator class="identity"/>
+    </id>
+    <property name="flNameCareer" type="string">
+      <column length="50" name="fl_name_career" not-null="true"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="tbStudentses" table="tb_students">
+      <key>
+        <column name="fl_fk_career"/>
+      </key>
+      <one-to-many class="hibernate.model.TbStudents"/>
+    </set>
+  </class>
+</hibernate-mapping>
